@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeroeComponent } from './pages/heroe/heroe.component';
-import { AppRoutingModule } from './app/app-routing.module';
+
 import { HeroesComponent } from './pages/heroes/heroes.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HeroesComponent } from './pages/heroes/heroes.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
