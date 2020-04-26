@@ -22,4 +22,42 @@ export class HeroesService {
         })
       )
   }
+
+  actualizarHeroe(heroe: HeroeModel)
+  {
+    const  heroeTemp = {
+      ...heroe
+    }
+
+    delete heroeTemp.id;
+
+    return this.http.put(`${this.url}/heroes/${heroe.id}.json`,heroe);
+  }
+
+  getHeroes()
+  {
+    return this.http.get(`${this.url}/heroes.json`)
+        .pipe(
+          map(resp=>this.crearArreglo(resp))
+        );
+  }
+
+  private crearArreglo(heroesObj: Object){
+
+    const heroes: HeroeModel[] = [];
+    console.log(heroesObj)
+
+    if(heroesObj === null)
+    {
+      return [];
+    }
+
+    Object.keys( heroesObj).forEach(key=>{
+      const heroe: HeroeModel = heroesObj[key]; 
+      heroe.id = key;
+      heroes.push(heroe);
+    })
+
+    return heroes;
+  }
 }
